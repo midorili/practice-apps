@@ -9,7 +9,7 @@ const GlossaryList = ({ words }) => {
     <div className="glossary-list">
       {words.map((word) => {
 
-        return < GlossaryListEntry word={word} />
+        return < GlossaryListEntry word={word} key={word.name} />
       })}
 
     </div>

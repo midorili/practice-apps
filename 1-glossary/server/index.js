@@ -32,6 +32,25 @@ app.get('/glossary', (req, res) => {
     })
 })
 
+let filteredFilter = '';
+
+app.post('/glossary/filter', (req, res) => {
+  console.log('filtered1', req.body)
+  filteredFilter = req.body.filter
+  res.send('success')
+})
+
+app.get('/glossary/filter', (req, res) => {
+  console.log('filtered2', filteredFilter)
+  glossary.glossaryModel.findOne({ word: filteredFilter })
+    .then((data) => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log('error in finding', err)
+    })
+})
+
 app.put('/glossary', (req, res) => {
   console.log('reqbody', req.body)
   let def = req.body.definition

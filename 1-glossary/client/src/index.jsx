@@ -5,11 +5,15 @@ import $ from 'jquery';
 import { createRoot } from 'react-dom/client';
 import GlossaryList from './GlossaryList'
 import GlossaryListEntry from './GlossaryListEntry'
+import FilterList from './FilterList';
 
 const App = () => {
   const [words, setWords] = useState([])
   const [word, setWord] = useState('')
   const [definition, setDefinition] = useState('')
+  const [filter, setFilter] = useState('')
+  const [filterResults, setFilterResults] = useState([])
+
 
 
 
@@ -36,6 +40,37 @@ const App = () => {
         console.log('errorPost')
       }
     })
+  }
+
+  const filterWord = (filter) => {
+    //ajax calls here
+
+    console.log(`${filter} was submitted`)
+    $.ajax({
+      url: "http://localhost:3000/glossary/filter",
+      method: "POST",
+      data: {
+        filter: filter
+      },
+      success: () => {
+        console.log('successFromSearch')
+        $.ajax({
+          url: "http://localhost:3000/glossary/filter",
+          method: "GET",
+          success: (data) => {
+            console.log('success from filter', data)
+            setFilterResults(data)
+          },
+          error: () => {
+            console.log('error filtering')
+          }
+        })
+      },
+      error: () => {
+        console.log('errorPost')
+      }
+    })
+
   }
 
   const load = () => {
@@ -75,6 +110,14 @@ const App = () => {
       </form>
       <div className="words-list">
         <GlossaryList words={words} />
+      </div>
+      <form>
+        <label>Filter</label>
+        <input id="filter" value={filter} onChange={(event) => { event.preventDefault(); setFilter(event.target.value) }}></input>
+        <button className="submit-filter" onClick={(event) => { event.preventDefault(); filterWord(filter) }}>Filter Here</button>
+      </form>
+      <div className="words-list">
+        <FilterList filter={filterResults} />
       </div>
     </div>
 
