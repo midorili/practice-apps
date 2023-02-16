@@ -74,10 +74,12 @@ app.put('/glossary', (req, res) => {
 })
 
 app.delete('/glossary', (req, res) => {
-  console.log('reqbdy', req.body)
-  glossary.glossaryModel.deleteOne()
+  console.log('reqbdy', req.body.deleteWord)
+  let deleteThis = req.body.deleteWord
+  console.log(deleteThis.length)
+  glossary.glossaryModel.deleteOne({ word: deleteThis })
     .then((data) => {
-      res.send(data)
+      res.send('deleted')
     })
     .catch(err => {
       console.log('error in deleting', err)

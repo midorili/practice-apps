@@ -30,7 +30,7 @@ const GlossaryListEntry = ({ word }) => {
   var deleteWord = '';
 
   const find = () => {
-    var deleted = document.getElementsByClassName("word")[0].textContent.slice(5)
+    var deleted = document.getElementsByClassName(word.word)[0].textContent.slice(6)
     console.log('deleted', deleted)
     deleteWord = deleted
   }
@@ -58,7 +58,7 @@ const GlossaryListEntry = ({ word }) => {
 
   return (
     <div className="word-list">
-      <div className="word">Word: {word.word}</div>
+      <div className={word.word}>Word: {word.word}</div>
       <div className="definition">Definition: {word.definition}</div>
       <button className="edit" onClick={(event) => { event.preventDefault(); edit(updatedWord) }}> Edit</button>
       <div id="hidden"> <input className="edit-box" type="text" onChange={(event) => { event.preventDefault(); setUpdate(event.target.value) }}></input></div>
