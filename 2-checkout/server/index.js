@@ -28,7 +28,6 @@ app.post('/purchase', (req, res) => {
   var queryArgs = [req.body.name, req.body.username, req.body.password, req.body.line1, req.body.line2, req.body.city, req.body.state, req.body.zipcode, req.body.credit, req.body.expiry, req.body.cvv, req.body.billingZip, req.session_id]
 
   db.queryAsync('INSERT INTO responses (name, username, password, line1, line2, city, state, zipcode, credit, expiry, cvv, billingZip, sessionId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);', queryArgs)
-
     .then((data) => {
       console.log('successful insert', data)
       console.log('res', data[0].insertId)
@@ -68,19 +67,3 @@ app.get('/purchase', (req, res) => {
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
 
-  // var loggedIn = false;
-  // var queryArgsFirst = [req.body.username, req.session_id]
-
-  // db.queryAsync(`SELECT username, sessionId FROM responses WHERE username = ? AND sessionId = ?`, queryArgsFirst, (err, data) => {
-  //   if (err) {
-  //     console.log('error searching', err)
-  //   } else {
-  //     loggedIn = true;
-  //     console.log('user is logged in')
-  //   }
-  // })
-
-  // if (loggedIn) {
-  //   console.log('loggedIn', loggedIn)
-  //   res.send('already logged in')
-  // } else {

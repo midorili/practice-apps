@@ -26,18 +26,6 @@ class Confirmation extends Component {
       expiry: this.props.stateFromPayment ? this.props.stateFromPayment.expiry : this.props.stateApp.expiry,
       cvv: this.props.stateFromPayment ? this.props.stateFromPayment.cvv : this.props.stateApp.cvv,
       billingZip: this.props.stateFromPayment ? this.props.stateFromPayment.billingZip : this.props.stateApp.billingZip
-      // name: '',
-      // username: '',
-      // password: '',
-      // line1: '',
-      // line2: '',
-      // city: '',
-      // state: '',
-      // zipcode: '',
-      // credit: '',
-      // expiry: '',
-      // cvv: '',
-      // billingZip: ''
     }
     this.hideMe = this.hideMe.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -90,11 +78,9 @@ class Confirmation extends Component {
           <div>Zipcode:{this.state.zipcode}</div>
           <div>Credit:{this.state.credit}</div>
           <div>CVV:{this.state.cvv}</div>
-          <button onClick={() => { this.setState({ onClickApp: true, onClickConfirmation: false }); this.hideMe(); this.handleSubmit() }}>Purchase</button>
+          <button onClick={() => { this.setState({ onClickApp: true }); this.hideMe(); this.handleSubmit() }}>Purchase</button>
         </div >
         {this.state.onClickApp ? <App stateFromConfirmation={this.state} /> : null}
-        {this.state.onClickPayment ? <Payment /> : null}
-
       </div >
     )
   }

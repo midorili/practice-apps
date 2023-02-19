@@ -50,10 +50,10 @@ class Shipping extends Component {
             <label>Zipcode</label>
             <input id="zipcode" type="text" value={this.state.zipcode} onChange={(event) => { event.preventDefault(); this.setState({ zipcode: event.target.value }) }}></input>
           </form>
-          <button onClick={() => { this.setState({ onClickPayment: true, onClickShipping: false }); this.hideMe() }}>Next</button>
+          <button onClick={() => { this.setState({ onClickPayment: true }); this.hideMe() }}>Next</button>
         </div>
         {this.state.onClickPayment ? <Payment stateFromShipping={this.state} /> : null}
-        {this.state.onClickAccount ? <Account /> : null}
+        {/* {this.state.onClickAccount ? <Account /> : null} */}
 
       </div >
     )

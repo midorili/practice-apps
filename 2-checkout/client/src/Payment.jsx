@@ -51,10 +51,10 @@ class Payment extends Component {
             <label>Billing Zip</label>
             <input id="billing-zip" type="text" value={this.state.billingZip} onChange={(event) => { event.preventDefault(); this.setState({ billingZip: event.target.value }) }}></input>
           </form>
-          <button onClick={() => { this.setState({ onClickConfirmation: true, onClickPayment: false }); this.hideMe() }}>Next</button>
+          <button onClick={() => { this.setState({ onClickConfirmation: true }); this.hideMe() }}>Next</button>
         </div>
         {this.state.onClickConfirmation ? <Confirmation stateFromPayment={this.state} /> : null}
-        {this.state.onClickShipping ? <Shipping /> : null}
+        {/* {this.state.onClickShipping ? <Shipping /> : null} */}
       </div >
     )
   }

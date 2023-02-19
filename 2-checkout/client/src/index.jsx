@@ -85,7 +85,7 @@ class App extends Component {
           <p >
             <code >Page Cookie: {JSON.stringify(document.cookie, undefined, "\t")}</code>
           </p>
-          <button onClick={() => { this.setState({ onClickAccount: true, onClickApp: false }); this.hideMe(); this.pageLoad() }}>Checkout</button>
+          <button onClick={() => { this.setState({ onClickAccount: true }); this.hideMe(); this.pageLoad() }}>Checkout</button>
         </div >
         {this.state.onClickAccount ? <Account accountState={this.state.onClickAccount} /> : null}
         {this.state.onClickConfirmation ? <Confirmation stateApp={this.state} /> : null}

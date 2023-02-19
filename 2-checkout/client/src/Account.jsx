@@ -45,7 +45,7 @@ class Account extends Component {
           <button className="hyde" onClick={() => { this.setState({ onClickShipping: true, onClickAccount: false }); this.hideMe() }}>Next</button>
         </div>
         {this.state.onClickShipping ? <Shipping stateFromAccount={this.state} /> : null}
-        {this.state.onClickApp ? <App /> : null}
+        {/* {this.state.onClickApp ? <App /> : null} */}
 
       </div >
     )
